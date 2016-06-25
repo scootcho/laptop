@@ -5,6 +5,7 @@
 # https://gist.github.com/zenorocha/7159780
 # https://coderwall.com/p/yiot4q/setup-vim-powerline-and-iterm2-on-mac-os-x
 
+
 # Install Homebrew
 echo "==================="
 echo "Installing Homebrew"
@@ -12,21 +13,15 @@ echo "==================="
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
-# Install Homebrew-cask
-echo "==================="
-echo "Installing Homebrew-cask"
-echo "==================="
-brew tap caskroom/cask
-brew tap Homebrew/bundle
 
 # Installing required packages
 echo "==================="
 echo "Installing Essential Packages"
 echo "==================="
 brew install \
-wget \
-curl \
-git \
+  wget \
+  curl \
+  git \
 
 echo "brew list"
 brew list
@@ -125,19 +120,21 @@ ruby-install --latest ruby
 source /usr/local/opt/chruby/share/chruby/auto.sh
 . ~/.bashrc
 
+echo "Installing Bundler"
+gem install bundler
+
 
 # Installing PostgreSQL
 echo "==================="
-echo "Installing Mongodb"
+echo "Installing PostgreSQL"
 echo "==================="
-
 brew install postgresql
+
 
 # Installing Mongodb
 echo "==================="
 echo "Installing Mongodb"
 echo "==================="
-
 brew install mongodb --with-openssl
 
 cat <<EOT >> ~/.zshrc
@@ -151,7 +148,6 @@ EOT
 echo "==================="
 echo "Installing NVM"
 echo "==================="
-
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 
 
@@ -159,7 +155,6 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | 
 echo "==================="
 echo "Installing NodeJS"
 echo "==================="
-
 nvm install 5.0
 nvm use 5.0
 
@@ -169,5 +164,8 @@ echo "==================="
 echo "Installing Packages & Applications"
 echo "==================="
 
-
+echo "checking Brewfile"
+brew bundle check
+echo "Install missing brew bundle"
+brew bundle
 
