@@ -115,10 +115,12 @@ softwareupdate -i "$PROD" -v;
 echo "==================="
 echo "Installing Chruby & Ruby"
 echo "==================="
-brew install chruby ruby-install
-ruby-install --latest ruby
-source /usr/local/opt/chruby/share/chruby/auto.sh
-. ~/.bashrc
+if ! [ -x "$(command -v chruby)" ]; then
+  brew install chruby ruby-install
+  ruby-install --latest ruby
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+  source ~/.bashrc
+fi
 
 echo "Installing Bundler"
 gem install bundler
@@ -128,7 +130,9 @@ gem install bundler
 echo "==================="
 echo "Installing PostgreSQL"
 echo "==================="
-brew install postgresql
+if ! [ -x "$(command -v psql)" ]; then
+  brew install postgresql
+fi
 
 
 # Installing Mongodb
