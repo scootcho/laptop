@@ -173,3 +173,17 @@ brew bundle check
 echo "Install missing brew bundle"
 brew bundle
 
+
+# Configuring Sublime Text 3
+echo "==================="
+echo "Configuring Sublime Text 3 and packages"
+echo "==================="
+
+ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+wget https://packagecontrol.io//Package%20Control.sublime-package --directory-prefix ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+
+cp ./sublime_settings/Package\ Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
+cp ./sublime_settings/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+
+subl 
