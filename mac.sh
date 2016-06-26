@@ -56,7 +56,7 @@ brew install zsh zsh-completions
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 chsh -s /usr/local/bin/zsh
 
-cat <<EOT >> ~/.zshrc
+cat <<'EOT' >> ~/.zshrc
 ZSH_THEME="agnoster"
 
 plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting)
@@ -65,7 +65,7 @@ plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew
 source ~/.env
 EOT
 
-cat <<EOT >> ~/.env
+cat <<'EOT' >> ~/.env
 #!/bin/zsh
 
 # PATH
@@ -119,7 +119,7 @@ if ! [ -x "$(command -v chruby)" ]; then
   brew install chruby ruby-install
   ruby-install --latest ruby
   source /usr/local/opt/chruby/share/chruby/auto.sh
-  source ~/.bashrc
+  source ~/.zshrc
 fi
 
 echo "Installing Bundler"
@@ -141,7 +141,8 @@ echo "Installing Mongodb"
 echo "==================="
 brew install mongodb --with-openssl
 
-cat <<EOT >> ~/.zshrc
+cat <<'EOT' >> ~/.zshrc
+
 # mongodb setup
 export MONGO_PATH=/usr/local/mongodb
 export PATH=$PATH:$MONGO_PATH/bin
@@ -153,7 +154,7 @@ echo "==================="
 echo "Installing NVM"
 echo "==================="
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
-
+source ~/.zshrc
 
 # Installing NodeJS
 echo "==================="
@@ -161,6 +162,13 @@ echo "Installing NodeJS"
 echo "==================="
 nvm install 5.0
 nvm use 5.0
+
+
+# Set global NPM
+echo "==================="
+echo "Set global NPM"
+echo "==================="
+sh ./global_npm.sh
 
 
 # Installing Packages & Applications
