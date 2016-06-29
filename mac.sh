@@ -37,8 +37,8 @@ IFS= read -r -p "Enter your git user name and press [ENTER]: " user_name
 git config --global user.name "$user_name"
 IFS= read -r -p "Enter your git user email and press [ENTER]: " user_name
 git config --global user.email $user_email
-git config --global core.excludesfile '~/.gitignore'
-echo '.DS_Store' >> ~/.gitignore
+git config --global core.excludesfile ~/.gitignore_global
+echo '.DS_Store' >> ~/.gitignore_global
 
 # Unix/Mac
 git config --global core.autocrlf input
@@ -121,6 +121,8 @@ if ! [ -x "$(command -v chruby)" ]; then
   source /usr/local/opt/chruby/share/chruby/auto.sh
   source ~/.zshrc
 fi
+
+echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
 echo "Installing Bundler"
 gem install bundler
