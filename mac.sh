@@ -143,6 +143,9 @@ echo "Installing Mongodb"
 echo "==================="
 brew install mongodb --with-openssl
 
+sudo mkdir -p /data/db
+sudo chown -R $USER /data/db
+
 cat <<'EOT' >> ~/.zshrc
 
 # mongodb setup
@@ -162,8 +165,8 @@ source ~/.zshrc
 echo "==================="
 echo "Installing NodeJS"
 echo "==================="
-nvm install 5.0
-nvm use 5.0
+nvm install node
+nvm use node
 
 
 # Set global NPM
