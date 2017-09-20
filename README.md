@@ -31,3 +31,11 @@ Restart iTerm2 for all changes to take effect.
 ```
 defaults write -g ApplePressAndHoldEnabled -bool false
 ```
+
+
+### Increase terminal cursor speed
+```
+System Preferences -> Keyboard -> Key Repeat Rate
+System Preferences -> Keyboard -> Delay Until Repeat
+```
+
